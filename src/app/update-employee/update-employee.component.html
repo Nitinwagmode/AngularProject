@@ -1,0 +1,47 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Update Employee </h3>
+    <form (ngSubmit)="onSubmit(employeeForm)" #employeeForm="ngForm">
+    
+        <div class="form-group">
+            <label> First Name</label>
+            <input type="text" class="form-control" id="firstName"
+                [(ngModel)]="employee.firstName" name="firstName" required pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$">
+            <div *ngIf="employeeForm.controls['firstName'].errors && employeeForm.controls['firstName'].touched" class="text-danger">
+                <div *ngIf="employeeForm.controls['firstName'].errors['required']">First Name is required</div>
+                <div *ngIf="employeeForm.controls['firstName'].errors['pattern']">First Name should contain only letters and single spaces</div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label> Last Name</label>
+            <input type="text" class="form-control" id="lastName"
+                [(ngModel)]="employee.lastName" name="lastName" required pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$">
+            <div *ngIf="employeeForm.controls['lastName'].errors && employeeForm.controls['lastName'].touched" class="text-danger">
+                <div *ngIf="employeeForm.controls['lastName'].errors['required']">Last Name is required</div>
+                <div *ngIf="employeeForm.controls['lastName'].errors['pattern']">Last Name should contain only letters and single spaces</div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label> Email Id</label>
+            <input type="email" class="form-control" id="emailId"
+                [(ngModel)]="employee.emailId" name="emailId" required>
+            <div *ngIf="employeeForm.controls['emailId'].errors && employeeForm.controls['emailId'].touched" class="text-danger">
+                <div *ngIf="employeeForm.controls['emailId'].errors['required']">Email is required</div>
+                <div *ngIf="employeeForm.controls['emailId'].errors['email']">Invalid Email</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label> Mobile Number</label>
+            <input type="number" class="form-control" id="phoneNo"
+                [(ngModel)]="employee.phoneNo" name="phoneNo" required pattern="^[0-9]{10}$">
+            <div *ngIf="employeeForm.controls['phoneNo'].errors && employeeForm.controls['phoneNo'].touched" class="text-danger">
+                <div *ngIf="employeeForm.controls['phoneNo'].errors['required']">Mobile Number is required</div>
+                <div *ngIf="employeeForm.controls['phoneNo'].errors['pattern']">Mobile Number should be 10 digits</div>
+            </div>
+        </div>
+    
+        <button class="btn btn-success" type="submit">Submit</button>
+    
+    </form>
