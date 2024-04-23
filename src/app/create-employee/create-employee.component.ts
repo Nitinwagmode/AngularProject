@@ -12,10 +12,6 @@ import { NgForm } from '@angular/forms';
 export class CreateEmployeeComponent implements OnInit {
 
   employee: Employee = new Employee();
-myForm: any;
-createEmployeeForm:any
-employeeForm: NgForm | undefined;
-
   constructor(private employeeService: EmployeeService,
     private router: Router) { }
 
@@ -33,17 +29,18 @@ employeeForm: NgForm | undefined;
   goToEmployeeList(){
     this.router.navigate(['/employees']);
   }
-  
-  onSubmit(employeeForm: NgForm) {
-    
+
+  onSubmit(employeeForm: NgForm){
+
     if (!this.validateForm(employeeForm)) {
-      // If form validation fails, return early
       return;
     }
 
     console.log(this.employee);
     this.saveEmployee();
   }
+
+
 
   validateForm(employeeForm: NgForm): boolean {
     // Validate First Name
@@ -52,14 +49,14 @@ employeeForm: NgForm | undefined;
       // Optionally, provide feedback to the user about the validation error
       return false;
     }
-    
+
     // Validate Last Name
     if (!this.employee.lastName || !/^[a-zA-Z]+(?: [a-zA-Z]+)*$/.test(this.employee.lastName.trim())) {
       console.log('Last Name is invalid');
       // Optionally, provide feedback to the user about the validation error
       return false;
     }
-    
+
     // Validate Email
     if (!this.employee.emailId || !this.isValidEmail(this.employee.emailId)) {
       console.log('Email is invalid');
@@ -67,19 +64,21 @@ employeeForm: NgForm | undefined;
       return false;
     }
 
-    if (!this.employee.phoneNo|| !/^[0-9]{10}$/.test(this.employee.phoneNo.trim())) {
+    if (!this.employee.phoneNo || !/^[0-9]{10}$/.test(String(this.employee.phoneNo).trim())) {
       console.log('Mobile Number is invalid');
       // Optionally, provide feedback to the user about the validation error
       return false;
-    }
+  }
+
 
     // All validations passed
     return true;
   }
 
   isValidEmail(email: string): boolean {
-    
+
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
+
 
 }
