@@ -67,11 +67,19 @@ export class UpdateEmployeeComponent implements OnInit {
       return false;
     }
 
-    if (!this.employee.phoneNo|| !/^[0-9]{10}$/.test(this.employee.phoneNo.trim())) {
+    // Validate position
+    if (!this.employee.position || !/^[a-zA-Z]+(?: [a-zA-Z]+)*$/.test(this.employee.position.trim())) {
+      console.log('Position is invalid');
+      // Optionally, provide feedback to the user about the validation error
+      return false;
+    }
+    //Validate phone number
+    if (!this.employee.phoneNo || !/^[0-9]{10}$/.test(String(this.employee.phoneNo).trim())) {
       console.log('Mobile Number is invalid');
       // Optionally, provide feedback to the user about the validation error
       return false;
     }
+    
 
     // All validations passed
     return true;

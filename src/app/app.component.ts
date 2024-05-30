@@ -7,4 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular 10 Spring Boot CRUD Full Stack App';
-}
+} 

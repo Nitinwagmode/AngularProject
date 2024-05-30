@@ -3,6 +3,7 @@ export class Employee {
     firstName!: string 
     lastName!: string 
     emailId!: string 
+    position!:string
     phoneNo!: String
-    mobileNumber: any
+    date!:Date
 }

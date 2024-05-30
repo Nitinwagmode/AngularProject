@@ -1,25 +1,39 @@
-<h2> Employee List</h2>
-<table class = "table table-striped">
-    <thead>
-        <tr>
-            <th> First Name</th>
-            <th> Last Name </th>
-            <th> Email Id</th>
-            <th> PhoneNo</th>
-            <th> Actions </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor = "let employee of employees" >
-            <td> {{ employee.firstName }} </td>
-            <td> {{ employee.lastName }} </td>
-            <td> {{ employee.emailId }} </td>
-            <td> {{ employee.phoneNo}} </td>
-            <td>
-                <button (click) = "updateEmployee(employee.id)" class = "btn btn-info"> Update</button>
-                <button (click) = "deleteEmployee(employee.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
-                <button (click) = "employeeDetails(employee.id)" class = "btn btn-info" style="margin-left: 10px"> View</button>
-            </td>
-        </tr>
-    </tbody>
+<h2>Employee List</h2>
+<input type="text" [(ngModel)]="searchQuery" (input)="filterEmployees()" placeholder="Search employees" class="form-control" style="margin-bottom: 10px;">
+<input type="date" [(ngModel)]="startDate" (change)="filterEmployees()" placeholder="Start date" class="form-control" style="margin-bottom: 10px;">
+<input type="date" [(ngModel)]="endDate" (change)="filterEmployees()" placeholder="End date" class="form-control" style="margin-bottom: 10px;">
+<button (click)="exportToExcel()" class="btn btn-success">Export to Excel</button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="color:blue">First Name</th>
+      <th style="color:blue">Last Name</th>
+      <th style="color:blue">Email Id</th>
+      <th style="color:blue">Position</th>
+      <th style="color:blue">PhoneNo</th>
+      <th style="color:blue">Date</th>
+      <th style="color:blue">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of filteredEmployees">
+      <td>{{ employee.firstName }}</td>
+      <td>{{ employee.lastName }}</td>
+      <td>{{ employee.emailId }}</td>
+      <td>{{ employee.position }}</td>
+      <td>{{ employee.phoneNo }}</td>
+      <td>{{ employee.date }}</td>
+      <td>
+        <button (click)="updateEmployee(employee.id)" class="btn btn-info">
+          <fa-icon [icon]="faEdit"></fa-icon>
+        </button>
+        <button (click)="deleteEmployee(employee.id)" class="btn btn-danger" style="margin-left: 10px">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+        <button (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 10px">
+          <fa-icon [icon]="faEye"></fa-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>

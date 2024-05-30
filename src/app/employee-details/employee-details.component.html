@@ -1,16 +1,37 @@
-<h3> View Employee Details</h3>
-<div>
-    <div>
-        <label> <b> First Name: </b></label> {{employee.firstName}}
+<div class="card">
+    <div class="card-header">
+        Employee Details
+        
     </div>
-    <div>
-        <label> <b> Last Name: </b></label> {{employee.lastName}}
+    
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <label><b>First Name:</b></label>
+                <span>{{employee.firstName}}</span>
+            </div>
+            <div class="col-md-12">
+                <label><b>Last Name:</b></label>
+                <span>{{employee.lastName}}</span>
+            </div>
+            <div class="col-md-6">
+                <label><b>Email Id:</b></label>
+                <span>{{employee.emailId}}</span>
+            </div>
+            <div class="col-md-6">
+                <label><b>Position:</b></label>
+                <span>{{employee.position}}</span>
+            </div>
+            <div class="col-md-12">
+                <label><b>Phone No:</b></label>
+                <span>{{employee.phoneNo}}</span>
+            </div>
+           </div>
+           <div class="col-md-6">
+            <div class="col-md-6">
+                <label><b>Date:</b></label>
+                <span>{{employee.date}}</span>
+            </div>
+        </div>
     </div>
-    <div>
-        <label> <b> Email Id: </b></label> {{employee.emailId}}
-    </div>
-
-    <label> <b> Phone No: </b></label> {{employee.phoneNo}}
-
-
 </div>

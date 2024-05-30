@@ -1,0 +1,15 @@
+<!-- navbar.component.html -->
+<nav class="navbar navbar-expand-sm bg-primary navbar-light">
+    <ul class="navbar-nav">
+      <li *ngIf="authService.isLoggedIn()" class="nav-item">
+        <a routerLink="employees" routerLinkActive="active" class="nav-link">Employee List</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn()" class="nav-item">
+        <a routerLink="create-employee" routerLinkActive="active" class="nav-link">Add Employee</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="login" routerLinkActive="active" class="nav-link" (click)="authService.logout()">Logout</a>
+      </li>
+    </ul>
+  </nav>
+  

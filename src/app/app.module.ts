@@ -11,26 +11,38 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
 import { FormGroup, } from '@angular/forms';
 import { FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AuthService } from './auth.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
 @NgModule({
   declarations: [
     
+   
     AppComponent,
+    NavbarComponent,
     EmployeeListComponent,
     CreateEmployeeComponent,
     UpdateEmployeeComponent,
-    EmployeeDetailsComponent
+    EmployeeDetailsComponent,
+    RegisterComponent,
+    LoginComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FontAwesomeModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
     ],
-  providers: [],
+  
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
